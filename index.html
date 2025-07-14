@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valenitnom - Experimental Electronic & Classical Music Artist</title>
+    <meta name="description" content="Valenitnom creates experimental electronic and classical music as a manifesto of deep human emotions, advocating for peace, beauty, love, and empathy.">
+    <meta name="keywords" content="valenitnom, experimental music, electronic music, classical music, peace, humanity, B.I.A.N.C.A., Stefano Chiassai">
+    <meta name="author" content="Valenitnom">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://valenitnom.com/">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://valenitnom.com/">
+    <meta property="og:title" content="Valenitnom - I am grateful, human, loving, peaceful">
+    <meta property="og:description" content="Experimental electronic and classical music as a manifesto of deep human emotions. My response to violence is life.">
+    <meta property="og:image" content="https://valenitnom.com/valenitnom-bianca-no-border.jpg">
+    <meta property="og:image:width" content="1030">
+    <meta property="og:image:height" content="1030">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://valenitnom.com/">
+    <meta property="twitter:title" content="Valenitnom - Experimental Music Artist">
+    <meta property="twitter:description" content="Creating music that represents the deepest human emotions and advocates for peace.">
+    <meta property="twitter:image" content="https://valenitnom.com/valenitnom-bianca-no-border.jpg">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "MusicGroup",
+        "name": "Valenitnom",
+        "url": "https://valenitnom.com",
+        "image": "https://valenitnom.com/valenitnom-bianca-no-border.jpg",
+        "description": "Experimental electronic and classical music artist advocating for peace and humanity",
+        "genre": ["Experimental", "Electronic", "Classical"],
+        "sameAs": [
+            "https://open.spotify.com/intl-it/album/7fBgy9GM4sFQfUluGM1KYR",
+            "https://instagram.com/valenitnom",
+            "https://www.youtube.com/@valenitnomvevo-gc3zr"
+        ]
+    }
+    </script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --text-dark: #0a0a0a;
+            --bg-dark: #0a0a0a;
+            --white: #ffffff;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            background-color: var(--bg-dark);
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            overflow-x: hidden;
+            background-image: url('bianca-valenitnom-bg.jpg');
+            background-position: center center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            background-size: cover;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: var(--white);
+            box-shadow: 0 0 60px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* White Section */
+        .white-section {
+            padding: 80px 40px 60px;
+            background-color: var(--white);
+        }
+        
+        /* Typewriter Effect */
+        .typewriter-container {
+            text-align: center;
+            margin-bottom: 60px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .typewriter {
+            font-size: clamp(24px, 3vw, 48px);
+            font-weight: 300;
+            color: var(--text-dark);
+            letter-spacing: 0.05em;
+        }
+        
+        .typewriter-text {
+            display: inline-block;
+            overflow: hidden;
+            border-right: 2px solid var(--text-dark);
+            white-space: nowrap;
+            animation: blink 0.7s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 100% { border-color: transparent; }
+            50% { border-color: var(--text-dark); }
+        }
+        
+        /* Two Column Layout */
+        .two-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+            margin-bottom: 60px;
+        }
+        
+        @media (max-width: 768px) {
+            .two-columns {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+        
+        .image-container {
+            text-align: center;
+        }
+        
+        .album-image {
+            max-width: 100%;
+            height: auto;
+            opacity: 0;
+            transform: scale(0.95);
+            transition: var(--transition);
+        }
+        
+        .album-image.loaded {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        .image-caption {
+            margin-top: 15px;
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .bio-text {
+            padding: 20px 0;
+        }
+        
+        .bio-text p {
+            margin-bottom: 20px;
+            line-height: 1.8;
+            opacity: 0;
+            transform: translateX(20px);
+            animation: fadeInRight 0.8s ease-out 0.3s forwards;
+        }
+        
+        @keyframes fadeInRight {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .date {
+            text-align: right;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        
+        /* Social Icons */
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            padding: 40px 0;
+        }
+        
+        .social-icon {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: var(--transition);
+        }
+        
+        .social-icon:nth-child(1) { animation: fadeInUpSocial 0.6s ease-out 0.5s forwards; }
+        .social-icon:nth-child(2) { animation: fadeInUpSocial 0.6s ease-out 0.6s forwards; }
+        .social-icon:nth-child(3) { animation: fadeInUpSocial 0.6s ease-out 0.7s forwards; }
+        
+        @keyframes fadeInUpSocial {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .social-icon:hover {
+            transform: scale(1.2);
+        }
+        
+        .social-icon img {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+        
+        /* Dark Section */
+        .dark-section {
+            background-color: var(--bg-dark);
+            color: var(--white);
+            padding: 80px 40px;
+        }
+        
+        .manifesto {
+            columns: 2;
+            column-gap: 40px;
+            text-align: justify;
+            line-height: 2;
+            font-size: 16px;
+        }
+        
+        @media (max-width: 768px) {
+            .manifesto {
+                columns: 1;
+            }
+        }
+        
+        .manifesto p {
+            margin-bottom: 20px;
+            break-inside: avoid;
+        }
+        
+        /* Language Toggle */
+        .language-toggle {
+            text-align: center;
+            margin-top: 60px;
+        }
+        
+        .lang-btn {
+            background: transparent;
+            border: 1px solid var(--white);
+            color: var(--white);
+            padding: 12px 30px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: var(--transition);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .lang-btn:hover {
+            background-color: var(--white);
+            color: var(--bg-dark);
+        }
+        
+        /* Loading Optimization */
+        .lazy {
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .lazy.loaded {
+            opacity: 1;
+        }
+        
+        /* Mobile Optimizations */
+        @media (max-width: 768px) {
+            .white-section, .dark-section {
+                padding: 40px 20px;
+            }
+            
+            .typewriter-container {
+                height: 60px;
+                margin-bottom: 40px;
+            }
+            
+            .social-icons {
+                gap: 30px;
+            }
+            
+            .social-icon {
+                width: 50px;
+                height: 50px;
+            }
+        }
+        
+        /* Print Styles */
+        @media print {
+            body {
+                background: none;
+            }
+            
+            .container {
+                box-shadow: none;
+            }
+            
+            .social-icons {
+                display: none;
+            }
+        }
+    </style>
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" as="image" href="valenitnom-bianca-no-border.jpg">
+    <link rel="preload" as="image" href="bianca-valenitnom-bg.jpg">
+</head>
+<body>
+    <main class="container">
+        <!-- White Section -->
+        <section class="white-section">
+            <div class="typewriter-container">
+                <h1 class="typewriter">
+                    <span>I am </span>
+                    <span class="typewriter-text" id="rotating-text">grateful</span>
+                </h1>
+            </div>
+            
+            <div class="two-columns">
+                <div class="image-container">
+                    <img src="valenitnom-bianca-no-border.jpg" 
+                         alt="B.I.A.N.C.A. by Stefano Chiassai - Marker on paper artwork" 
+                         class="album-image lazy"
+                         width="1030"
+                         height="1030"
+                         loading="lazy">
+                    <p class="image-caption">
+                        <strong>Stefano Chiassai, B.I.A.N.C.A.</strong><br>
+                        2024. Marker on paper. 30x30
+                    </p>
+                </div>
+                
+                <div class="bio-text" data-lang="en">
+                    <p>I am grateful for the opportunity to experience life, embracing diversity and rejecting prejudice. I struggle to understand humanity's capacity for selfishness and violence. My response to such cruelty is to advocate for peace, valuing beauty, love, and empathy. We must enrich the world with humanity, not hatred.</p>
+                    <p>For me, music is a necessity, and I experience it as the best method of self-expression. Beyond the genres I create, ranging from experimental electronic to classical, the message I try to convey can be summarized as a manifesto representing the deepest human emotions and aims to denounce all those situations where humanity is set aside.</p>
+                    <p class="date">30.12.24</p>
+                </div>
+                
+                <div class="bio-text" data-lang="it" style="display: none;">
+                    <p>Sono grato per l'opportunità di poter vivere, abbracciando le diversità e rifiutando i pregiudizi. Faccio fatica a comprendere la capacità umana di essere egoista e violenta. La mia risposta a tale crudeltà passa attraverso la pace, valorizzando la bellezza, l'amore e l'empatia. Dobbiamo arricchire il mondo con umanità, non con odio.</p>
+                    <p>Per me la musica è una necessità e la considero il miglior metodo di espressione personale. Al di là dei generi che creo, che spaziano dalla musica elettronica sperimentale alla classica, il messaggio che cerco di veicolare si riassume come un manifesto di rappresentazione delle emozioni umane più profonde e vuole essere denuncia di tutte quelle situazioni dove l'umanità viene messa da parte.</p>
+                    <p class="date">30.12.24</p>
+                </div>
+            </div>
+            
+            <div class="social-icons">
+                <a href="https://open.spotify.com/intl-it/album/7fBgy9GM4sFQfUluGM1KYR" 
+                   target="_blank" 
+                   rel="noopener noreferrer" 
+                   class="social-icon"
+                   aria-label="Listen on Spotify">
+                    <img src="spotify.png" alt="Spotify" width="60" height="60" loading="lazy">
+                </a>
+                <a href="https://instagram.com/valenitnom" 
+                   target="_blank" 
+                   rel="noopener noreferrer" 
+                   class="social-icon"
+                   aria-label="Follow on Instagram">
+                    <img src="instagram.png" alt="Instagram" width="60" height="60" loading="lazy">
+                </a>
+                <a href="https://www.youtube.com/@valenitnomvevo-gc3zr" 
+                   target="_blank" 
+                   rel="noopener noreferrer" 
+                   class="social-icon"
+                   aria-label="Watch on YouTube">
+                    <img src="youtube.png" alt="YouTube" width="60" height="60" loading="lazy">
+                </a>
+            </div>
+        </section>
+        
+        <!-- Dark Section -->
+        <section class="dark-section">
+            <div class="manifesto" data-lang="en">
+                <p>I would like to thank everyone, anyone, every living being, for the fortune I've had in being able to experience this life, in being born in a historical period, in a place, in a family that has allowed me to realize and enjoy the beauty of life. Gratitude is one of the actions that most ennobles the soul: do it with satisfaction and with respect.</p>
+                
+                <p>I have always tried to take the best from what life presented to me, avoiding unnecessary conditioning and prejudices and cultivating the value of diversity, which I have always considered a resource. But human beings are small, afraid, selfish, and dishonest: sometimes I think about humanity, about the actions it is taking today, and I cry.</p>
+                
+                <p>It is terribly difficult for me to understand how one person, standing before another, can so superficially think he is better, be convinced that their worth and the value of their life are different and superior to someone else's, to be prejudiced against the goodness of other souls when all they know about them is an unnecessary and horrifying prejudice born from a lack of culture.</p>
+                
+                <p>I find myself thinking that human beings, if deprived of sight, might be better: I imagine a person alone, in the darkness, in the cold, in silence, abandoned, suffering, asking for help – how could you not help them? Then I wonder how it is possible for someone to arm themselves with the intent to kill, to find the courage to do it, to have the strength to do it again, without thinking that those victims are someone else's children, someone else's parents, grandchildren, relatives, or friends.</p>
+                
+                <p>I don't understand.</p>
+                
+                <p>how it is so impossible to place oneself in another's life, to imagine that roles could be reversed, that by closing and reopening our eyes, reality could be different, that the ones being harmed could be your own children, your own relatives, your own friends, ourselves? It seems impossible to contain this innate animal selfishness that humans have carried within them since the beginning of time.</p>
+                
+                <p>Personally, I absolutely reject war and violence. I am convinced that containing violence is the only hope for humanity. Everyone has their own experiences, and it is certainly not easy to overcome certain events, traumas, tragedies and to avoid projecting one's pain, one's suffering, one's anger onto others. But breaking the spiral of violence is the only way for humanity to elevate itself, and the only opportunity for each individual to be human.</p>
+                
+                <p>The world, nature, and the human beings who are part of it represent the beauty, love, and emotions we must nourish ourselves with. We must seek and cultivate art and freedom, be moved and inspire others, broaden our horizons and value differences by respecting and embracing them: loving them. We must progress culturally, we must trust and be fair, honest, we must enrich this world where courage is being human, not being beasts.</p>
+                
+                <p>My answer to violence is life.</p>
+            </div>
+            
+            <div class="manifesto" data-lang="it" style="display: none;">
+                <p>Vorrei ringraziare tutti, chiunque, ogni essere vivente, per la fortuna avuta nel poter vivere quest'esperienza, nell'esser nato in un periodo storico, in un luogo, in una famiglia che mi ha permesso di potermi accorgere e di poter godere della bellezza della vita. Ringraziare è una delle azioni che nobilita di più l'anima: fatelo con soddisfazione e con rispetto.</p>
+                
+                <p>Ho sempre cercato di prendere il meglio da ciò che la vita mi presentava, evitando inutili condizionamenti e pregiudizi e coltivando il valore delle diversità, considerate sempre una risorsa. Ma l'essere umano è piccolo, ha paura, è egoista e disonesto: ogni tanto penso all'umanità, alle azioni che sta compiendo oggi, e piango.</p>
+                
+                <p>Per me è terribilmente difficile capire come una persona di fronte ad un'altra possa con estrema superficialità pensare di esserne migliore, esser convinta che il suo valore e quello della propria vita sia diverso e superiore da quello altrui, partire prevenuta sulla bontà delle altre anime quando tutto ciò che si conosce dell'altro è un'inutile e raccapricciante pregiudizio creatosi da una scarsa cultura.</p>
+                
+                <p>Mi viene da pensare che l'essere umano, già senza la vista, possa essere migliore: immagino una persona sola, al buio, al freddo, nel silenzio, abbandonata, sofferente, che chiede aiuto - come non darglielo? Poi mi chiedo come faccia ad armarsi con l'intento di uccidere a trovare il coraggio di farlo avere la forza di rifarlo, senza pensare che quelle vittime siano i figli di qualcun altro, i genitori di qualcun altro, nipoti, parenti od amici di qualcun altro:</p>
+                
+                <p>non capisco</p>
+                
+                <p>come mai sia impossibile immedesimarsi nelle vite altrui, a pensare che le parti ed i ruoli potrebbero essere inversi, che chiusi gli occhi e riaperti la realtà possa essere diversa, che a ricevere le offese possano essere i propri figli, i propri parenti, i propri amici, noi stessi: sembra impossibile arginare quest'egoismo animale innato che l'uomo si trascina dentro da sempre.</p>
+                
+                <p>Personalmente ripudio la guerra e la violenza in maniera assoluta. Sono convinto che arginare la violenza sia l'unica speranza per l'umanità. Ognuno ha le proprie esperienze e non è sicuramente semplice superare alcuni avvenimenti, traumi o tragedie vissute, e riuscire a non riversare sull'altro il proprio dolore, le proprie sofferenze, la propria rabbia, la propria voglia di riscatto, ma interrompere la spirale della violenza è l'unico modo per far si che l'essere umano possa elevarsi, e la sola possibilità di ciascun individuo di essere umano.</p>
+                
+                <p>Il mondo, la natura e gli stessi esseri umani che ne fanno parte rappresentano la bellezza, l'amore, le emozioni di cui dovremmo nutrirci. Dobbiamo ricercare e coltivare l'arte e la libertà, emozionarci ed emozionare aprire gli orizzonti e valorizzare le differenze rispettandole e valorizzandole: amandole. Dobbiamo progredire culturalmente, dobbiamo fidarci ed essere giusti, onesti, dobbiamo arricchire questo mondo dove il coraggio ed è essere umani non essere bestie</p>
+                
+                <p>La mia risposta alla violenza è la vita</p>
+            </div>
+            
+            <div class="language-toggle">
+                <button class="lang-btn" onclick="toggleLanguage()" aria-label="Toggle language">
+                    <span>⚑</span>
+                    <span data-lang="en">Leggi in italiano</span>
+                    <span data-lang="it" style="display: none;">Read in english</span>
+                </button>
+            </div>
+        </section>
+    </main>
+    
+    <script>
+        // Typewriter effect
+        const words = ['grateful', 'valenitnom', 'human', 'valenitnom', 'loving', 'peaceful', 'valenitnom'];
+        const wordsIt = ['grato', 'valenitnom', 'umano', 'valenitnom', 'amorevole', 'pacifico', 'valenitnom'];
+        let wordIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let currentLang = 'en';
+        
+        function typeWriter() {
+            const element = document.getElementById('rotating-text');
+            const currentWords = currentLang === 'en' ? words : wordsIt;
+            const currentWord = currentWords[wordIndex];
+            
+            if (isDeleting) {
+                element.textContent = currentWord.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                element.textContent = currentWord.substring(0, charIndex + 1);
+                charIndex++;
+            }
+            
+            if (!isDeleting && charIndex === currentWord.length) {
+                isDeleting = true;
+                setTimeout(typeWriter, 2000);
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                wordIndex = (wordIndex + 1) % currentWords.length;
+                setTimeout(typeWriter, 500);
+            } else {
+                const speed = isDeleting ? 50 : 100;
+                setTimeout(typeWriter, speed);
+            }
+        }
+        
+        // Language toggle
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'it' : 'en';
+            document.documentElement.lang = currentLang;
+            
+            // Update page title
+            document.title = currentLang === 'en' 
+                ? 'Valenitnom - Experimental Electronic & Classical Music Artist'
+                : 'Valenitnom - Artista di Musica Elettronica Sperimentale e Classica';
+            
+            // Toggle all language-specific content
+            document.querySelectorAll('[data-lang]').forEach(el => {
+                el.style.display = el.getAttribute('data-lang') === currentLang ? '' : 'none';
+            });
+            
+            // Reset typewriter
+            wordIndex = 0;
+            charIndex = 0;
+            isDeleting = false;
+        }
+        
+        // Lazy loading for images
+        const lazyImages = document.querySelectorAll('.lazy');
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.classList.add('loaded');
+                    observer.unobserve(img);
+                }
+            });
+        });
+        
+        lazyImages.forEach(img => {
+            imageObserver.observe(img);
+        });
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            typeWriter();
+            
+            // Detect browser language
+            const browserLang = navigator.language.substring(0, 2);
+            if (browserLang === 'it') {
+                toggleLanguage();
+            }
+        });
+        
+        // Performance optimization: Debounce scroll events
+        let scrollTimeout;
+        window.addEventListener('scroll', () => {
+            if (scrollTimeout) {
+                window.cancelAnimationFrame(scrollTimeout);
+            }
+            scrollTimeout = window.requestAnimationFrame(() => {
+                // Add any scroll-based animations here
+            });
+        }, { passive: true });
+    </script>
+</body>
+</html>
