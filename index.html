@@ -10,6 +10,11 @@
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://valenitnom.com/">
     
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400&display=swap" rel="stylesheet">
+    
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://valenitnom.com/">
@@ -60,15 +65,16 @@
         
         html {
             scroll-behavior: smooth;
-            background-color: var(--bg-dark);
+            background-color: var(--white);
         }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
             color: var(--text-dark);
             overflow-x: hidden;
-            background-image: url('bianca-valenitnom-bg.jpg');
+            background-color: var(--white);
+            background-image: url('valenitnom-bianca-no-border.jpg');
             background-position: center center;
             background-attachment: fixed;
             background-repeat: no-repeat;
@@ -78,7 +84,7 @@
         
         .container {
             max-width: 1200px;
-            margin: 0 auto;
+            margin: 20px auto;
             background-color: var(--white);
             box-shadow: 0 0 60px rgba(0, 0, 0, 0.3);
             opacity: 0;
@@ -103,10 +109,7 @@
         .typewriter-container {
             text-align: center;
             margin-bottom: 60px;
-            height: 80px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            min-height: 80px;
         }
         
         .typewriter {
@@ -114,6 +117,12 @@
             font-weight: 300;
             color: var(--text-dark);
             letter-spacing: 0.05em;
+            font-family: 'Playfair Display', serif;
+            display: inline-block;
+        }
+        
+        .typewriter-static {
+            display: inline-block;
         }
         
         .typewriter-text {
@@ -122,6 +131,14 @@
             border-right: 2px solid var(--text-dark);
             white-space: nowrap;
             animation: blink 0.7s infinite;
+            min-width: 120px;
+            text-align: left;
+        }
+        
+        @media (max-width: 768px) {
+            .typewriter-text {
+                min-width: 90px;
+            }
         }
         
         @keyframes blink {
@@ -166,6 +183,11 @@
             margin-top: 15px;
             font-size: 14px;
             color: #666;
+            font-weight: 300;
+        }
+        
+        .image-caption strong {
+            font-weight: 600;
         }
         
         .bio-text {
@@ -178,6 +200,7 @@
             opacity: 0;
             transform: translateX(20px);
             animation: fadeInRight 0.8s ease-out 0.3s forwards;
+            font-weight: 300;
         }
         
         @keyframes fadeInRight {
@@ -189,7 +212,7 @@
         
         .date {
             text-align: right;
-            font-weight: bold;
+            font-weight: 600;
             margin-top: 20px;
         }
         
@@ -244,6 +267,7 @@
             text-align: justify;
             line-height: 2;
             font-size: 16px;
+            font-weight: 300;
         }
         
         @media (max-width: 768px) {
@@ -270,6 +294,8 @@
             padding: 12px 30px;
             cursor: pointer;
             font-size: 16px;
+            font-weight: 300;
+            font-family: 'Inter', sans-serif;
             transition: var(--transition);
             text-decoration: none;
             display: inline-flex;
@@ -294,12 +320,17 @@
         
         /* Mobile Optimizations */
         @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                width: calc(100% - 20px);
+            }
+            
             .white-section, .dark-section {
                 padding: 40px 20px;
             }
             
             .typewriter-container {
-                height: 60px;
+                min-height: 60px;
                 margin-bottom: 40px;
             }
             
@@ -315,12 +346,13 @@
         
         /* Print Styles */
         @media print {
-            body {
-                background: none;
+            html, body {
+                background: white !important;
             }
             
             .container {
                 box-shadow: none;
+                margin: 0;
             }
             
             .social-icons {
@@ -331,7 +363,6 @@
     
     <!-- Preload critical resources -->
     <link rel="preload" as="image" href="valenitnom-bianca-no-border.jpg">
-    <link rel="preload" as="image" href="bianca-valenitnom-bg.jpg">
 </head>
 <body>
     <main class="container">
@@ -339,8 +370,7 @@
         <section class="white-section">
             <div class="typewriter-container">
                 <h1 class="typewriter">
-                    <span>I am </span>
-                    <span class="typewriter-text" id="rotating-text">grateful</span>
+                    <span class="typewriter-static">I am </span><span class="typewriter-text" id="rotating-text">grateful</span>
                 </h1>
             </div>
             
@@ -451,7 +481,6 @@
     <script>
         // Typewriter effect
         const words = ['grateful', 'valenitnom', 'human', 'valenitnom', 'loving', 'peaceful', 'valenitnom'];
-        const wordsIt = ['grato', 'valenitnom', 'umano', 'valenitnom', 'amorevole', 'pacifico', 'valenitnom'];
         let wordIndex = 0;
         let charIndex = 0;
         let isDeleting = false;
@@ -459,8 +488,7 @@
         
         function typeWriter() {
             const element = document.getElementById('rotating-text');
-            const currentWords = currentLang === 'en' ? words : wordsIt;
-            const currentWord = currentWords[wordIndex];
+            const currentWord = words[wordIndex];
             
             if (isDeleting) {
                 element.textContent = currentWord.substring(0, charIndex - 1);
@@ -475,7 +503,7 @@
                 setTimeout(typeWriter, 2000);
             } else if (isDeleting && charIndex === 0) {
                 isDeleting = false;
-                wordIndex = (wordIndex + 1) % currentWords.length;
+                wordIndex = (wordIndex + 1) % words.length;
                 setTimeout(typeWriter, 500);
             } else {
                 const speed = isDeleting ? 50 : 100;
@@ -497,11 +525,6 @@
             document.querySelectorAll('[data-lang]').forEach(el => {
                 el.style.display = el.getAttribute('data-lang') === currentLang ? '' : 'none';
             });
-            
-            // Reset typewriter
-            wordIndex = 0;
-            charIndex = 0;
-            isDeleting = false;
         }
         
         // Lazy loading for images
