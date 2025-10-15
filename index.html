@@ -388,6 +388,33 @@
       }
     </style>
 
+
+<style>
+
+/* INCANTAMENTO cover: ultra-light, crisp drop shadow to separate white-on-white */
+#incantamento .image-container .album-image {
+  /* keep edges square */
+  border-radius: 0;
+  /* minimal separation and subtle presence */
+  filter: drop-shadow(0 2px 10px rgba(0,0,0,0.07)) drop-shadow(0 1px 2px rgba(0,0,0,0.05));
+}
+
+</style>
+
+
+<style>
+
+/* Smooth crossfade when swapping social icon sources */
+.social-icon img {
+  transition: opacity 180ms ease-in-out, transform 180ms ease-in-out;
+  will-change: opacity, transform;
+}
+.social-icon:hover img {
+  transform: translateY(-2px) scale(1.06);
+}
+
+</style>
+
 </head>
 <body>
     
@@ -395,7 +422,6 @@
 <!-- INCANTAMENTO: added non-destructively inside the existing white section box -->
     <div class="container container--top" aria-label="INCANTAMENTO boxed section">
       <section id="incantamento" class="white-section">
-        <h2 style="text-align:center; letter-spacing:0.08em;">INCANTAMENTO</h2>
         <div class="two-columns">
           <div class="bio-text">
             <p>A sound journey created for the exhibition INCANTAMENTO by Stefano Chiassai, conceived as a site specific project designed for the monumental spaces of the Sant'Agostino Complex in Pietrasanta.</p>
@@ -416,16 +442,26 @@
         <div class="social-icons">
           <a href="https://open.spotify.com/intl-it/album/7fBgy9GM4sFQfUluGM1KYR" 
              target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Listen on Spotify">
-            <img src="spotify.png" alt="Spotify" loading="lazy">
+            <img src="spotify.png" data-hover="spotify_hover.png" alt="Spotify" loading="lazy">
           </a>
           <a href="https://instagram.com/valenitnom" 
              target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Follow on Instagram">
-            <img src="instagram.png" alt="Instagram" loading="lazy">
+            <img src="instagram.png" data-hover="instagram_hover.png" alt="Instagram" loading="lazy">
           </a>
           <a href="https://www.youtube.com/@valenitnomvevo-gc3zr" 
              target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Watch on YouTube">
-            <img src="youtube.png" alt="YouTube" loading="lazy">
+            <img src="youtube.png" data-hover="youtube_hover.png" alt="YouTube" loading="lazy">
           </a>
+        
+          <a href="https://music.apple.com/" 
+             target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Listen on Apple Music">
+            <img src="applemusic.png" data-hover="applemusic_hover.png" alt="Apple Music" loading="lazy">
+          </a>
+          <a href="https://www.beatport.com/" 
+             target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Find on Beatport">
+            <img src="beatport.png" data-hover="beatport_hover.png" alt="Beatport" loading="lazy">
+          </a>
+    
         </div>
       </section>
     </div>
@@ -464,31 +500,7 @@
                     <p class="date">30.12.24</p>
                 </div>
             </div>
-            
-            <div class="social-icons">
-                <a href="https://open.spotify.com/intl-it/album/7fBgy9GM4sFQfUluGM1KYR" 
-                   target="_blank" 
-                   rel="noopener noreferrer" 
-                   class="social-icon"
-                   aria-label="Listen on Spotify">
-                    <img src="spotify.png" alt="Spotify" width="60" height="60" loading="lazy">
-                </a>
-                <a href="https://instagram.com/valenitnom" 
-                   target="_blank" 
-                   rel="noopener noreferrer" 
-                   class="social-icon"
-                   aria-label="Follow on Instagram">
-                    <img src="instagram.png" alt="Instagram" width="60" height="60" loading="lazy">
-                </a>
-                <a href="https://www.youtube.com/@valenitnomvevo-gc3zr" 
-                   target="_blank" 
-                   rel="noopener noreferrer" 
-                   class="social-icon"
-                   aria-label="Watch on YouTube">
-                    <img src="youtube.png" alt="YouTube" width="60" height="60" loading="lazy">
-                </a>
-            </div>
-        </section>
+</section>
         
         <!-- Dark Section -->
         <section class="dark-section">
@@ -629,5 +641,44 @@
             });
         }, { passive: true });
     </script>
+
+<script>
+  // Social icon hover swap with preloading and gentle crossfade
+  document.addEventListener('DOMContentLoaded', function() {
+    const icons = document.querySelectorAll('.social-icon img[data-hover]');
+    const cache = new Map();
+
+    function preload(src) {
+      if (!src) return;
+      if (cache.has(src)) return;
+      const img = new Image();
+      img.src = src;
+      cache.set(src, img);
+    }
+
+    icons.forEach(img => {
+      const original = img.getAttribute('src');
+      const hover = img.getAttribute('data-hover');
+      preload(hover);
+      img.style.opacity = '1';
+      img.addEventListener('mouseenter', () => {
+        // fade-out then swap then fade-in
+        img.style.opacity = '0';
+        setTimeout(() => {
+          img.setAttribute('src', hover);
+          img.style.opacity = '1';
+        }, 120);
+      });
+      img.addEventListener('mouseleave', () => {
+        img.style.opacity = '0';
+        setTimeout(() => {
+          img.setAttribute('src', original);
+          img.style.opacity = '1';
+        }, 120);
+      });
+    });
+  });
+</script>
+
 </body>
 </html>
