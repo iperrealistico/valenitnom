@@ -378,9 +378,58 @@
     
     <!-- Preload critical resources -->
     <link rel="preload" as="image" href="valenitnom-bianca-no-border.jpg">
+
+    <!-- Added: top boxed container spacing (non-destructive) -->
+    <style>
+      /* New top container spacing only; does not affect existing rules */
+      .container--top { margin: 0 auto 40px; }
+      @media (max-width: 768px) {
+        .container--top { margin: 0 auto 20px; }
+      }
+    </style>
+
 </head>
 <body>
-    <main class="container">
+    
+    <!-- Added: secondary boxed page above the existing one -->
+<!-- INCANTAMENTO: added non-destructively inside the existing white section box -->
+    <div class="container container--top" aria-label="INCANTAMENTO boxed section">
+      <section id="incantamento" class="white-section">
+        <h2 style="text-align:center; letter-spacing:0.08em;">INCANTAMENTO</h2>
+        <div class="two-columns">
+          <div class="bio-text">
+            <p>A sound journey created for the exhibition INCANTAMENTO by Stefano Chiassai, conceived as a site specific project designed for the monumental spaces of the Sant'Agostino Complex in Pietrasanta.</p>
+            <p>Through the vast single nave of the Church of Sant'Agostino, its choir, the evocative adjacent cloister, and the two rooms of Putti and Capitolo, the exhibition unfolds as an immersive journey into the artist's multimedia universe, which includes tapestries, sculptures, some of monumental scale, videos, installations, and the creation of everyday objects such as carpets, garments, and seating.</p>
+            <p class="date">OUT 26.10.25</p>
+          </div>
+          <div class="image-container">
+            <img src="incantamento.jpeg"
+                 alt="INCANTAMENTO artwork by Stefano Chiassai"
+                 class="album-image lazy"
+                 loading="lazy">
+            <p class="image-caption">
+              <strong>Stefano Chiassai, INCANTAMENTO</strong><br>
+              2025. Marker on paper. 30x30
+            </p>
+          </div>
+        </div>
+        <div class="social-icons">
+          <a href="https://open.spotify.com/intl-it/album/7fBgy9GM4sFQfUluGM1KYR" 
+             target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Listen on Spotify">
+            <img src="spotify.png" alt="Spotify" loading="lazy">
+          </a>
+          <a href="https://instagram.com/valenitnom" 
+             target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Follow on Instagram">
+            <img src="instagram.png" alt="Instagram" loading="lazy">
+          </a>
+          <a href="https://www.youtube.com/@valenitnomvevo-gc3zr" 
+             target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Watch on YouTube">
+            <img src="youtube.png" alt="YouTube" loading="lazy">
+          </a>
+        </div>
+      </section>
+    </div>
+<main class="container">
         <!-- White Section -->
         <section class="white-section">
             <div class="typewriter-container">
