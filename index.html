@@ -313,6 +313,16 @@
             background-color: var(--white);
             color: var(--bg-dark);
         }
+
+        /* Light variant for buttons on white backgrounds */
+        .lang-btn--light {
+            border: 1px solid var(--text-dark);
+            color: var(--text-dark);
+        }
+        .lang-btn--light:hover {
+            background-color: var(--text-dark);
+            color: var(--white);
+        }
         
         /* Loading Optimization */
         .lazy {
@@ -413,11 +423,22 @@
     <div class="container container--top" aria-label="INCANTAMENTO boxed section">
       <section id="incantamento" class="white-section">
         <div class="two-columns">
-          <div class="bio-text">
-            <p>A sound journey created for the exhibition INCANTAMENTO by Stefano Chiassai, conceived as a site specific project designed for the monumental spaces of the Sant'Agostino Complex in Pietrasanta.</p>
-            <p>Through the vast single nave of the Church of Sant'Agostino, its choir, the evocative adjacent cloister, and the two rooms of Putti and Capitolo, the exhibition unfolds as an immersive journey into the artist's multimedia universe, which includes tapestries, sculptures, some of monumental scale, videos, installations, and the creation of everyday objects such as carpets, garments, and seating.</p>
+          <!-- EN content -->
+          <div class="bio-text" data-lang="en">
+            <p>A sound journey conceived by Marius Hordijk and developed from his insights for INCANTAMENTO, the exhibition by Stefano Chiassai, created as a site-specific project designed for the monumental spaces of the Sant’Agostino Complex in Pietrasanta.</p>
+            <p>The sound composition accompanies visitors through the spaces, enhancing the dialogue between matter, form, and emotion, and guiding them into an atmosphere of reflection and enchantment.</p>
+            <p>Through the vast single nave of the Church of Sant’Agostino, its choir, the evocative adjacent cloister, and the two rooms of the Putti and Capitolo, the exhibition unfolds as an immersive journey into the artist’s multimedia universe, encompassing tapestries, sculptures, some of monumental scale, videos, installations, and the creation of everyday objects such as carpets, garments, and seating.</p>
             <p class="date">OUT 26.10.25</p>
           </div>
+
+          <!-- IT content -->
+          <div class="bio-text" data-lang="it" style="display: none;">
+            <p>Un viaggio sonoro nato dall'idea di Marius Hordijk e sviluppato dalle sue intuizioni per la mostra INCANTAMENTO di Stefano Chiassai che nasce come un progetto site specific pensato per gli spazi monumentali del Complesso di Sant’Agostino a Pietrasanta.</p> 
+            <p>La composizione sonora accompagna il visitatore attraverso gli ambienti, amplificando il dialogo tra materia, forma ed emozione, e guidandolo in un’atmosfera di riflessione e incantamento.</p>
+            <p>Attraverso la grande navata unica della Chiesa di Sant’Agostino, il suo coro, il suggestivo chiostro adiacente e le due sale dei Putti e del Capitolo, la mostra è ideata come un percorso immersivo nell’opera multimediale dell’artista che comprende gli arazzi, la scultura - anche di dimensioni monumentali - il video, l’installazione e la creazione di oggetti d’uso quotidiano come tappeti, abiti o sedute.</p>
+            <p class="date">OUT 26.10.25</p>
+          </div>
+
           <div class="image-container">
             <img src="incantamento.jpeg"
                  alt="INCANTAMENTO artwork by Stefano Chiassai"
@@ -457,9 +478,19 @@
             <img class="default" src="beatport.png" alt="Beatport" loading="lazy">
             <img class="hover" src="beatport_hover.png" alt="" aria-hidden="true" loading="lazy">
           </a>
-</div>
+        </div>
+
+        <!-- Local language toggle button for INCANTAMENTO -->
+        <div class="language-toggle">
+            <button class="lang-btn lang-btn--light" onclick="toggleLanguage()" aria-label="Toggle language for INCANTAMENTO">
+                <span>⚑</span>
+                <span data-lang="en">Leggi in italiano</span>
+                <span data-lang="it" style="display: none;">Read in english</span>
+            </button>
+        </div>
       </section>
     </div>
+
 <main class="container">
         <!-- White Section -->
         <section class="white-section">
@@ -534,7 +565,7 @@
                 
                 <p>Personalmente ripudio la guerra e la violenza in maniera assoluta. Sono convinto che arginare la violenza sia l'unica speranza per l'umanità. Ognuno ha le proprie esperienze e non è sicuramente semplice superare alcuni avvenimenti, traumi o tragedie vissute, e riuscire a non riversare sull'altro il proprio dolore, le proprie sofferenze, la propria rabbia, la propria voglia di riscatto, ma interrompere la spirale della violenza è l'unico modo per far si che l'essere umano possa elevarsi, e la sola possibilità di ciascun individuo di essere umano.</p>
                 
-                <p>Il mondo, la natura e gli stessi esseri umani che ne fanno parte rappresentano la bellezza, l'amore, le emozioni di cui dovremmo nutrirci. Dobbiamo ricercare e coltivare l'arte e la libertà, emozionarci ed emozionare aprire gli orizzonti e valorizzare le differenze rispettandole e valorizzandole: amandole. Dobbiamo progredire culturalmente, dobbiamo fidarci ed essere giusti, onesti, dobbiamo arricchire questo mondo dove il coraggio ed è essere umani non essere bestie</p>
+                <p>Il mondo, la natura e gli stessi esseri umani che ne fanno parte rappresentano la bellezza, l'amore e le emozioni di cui dovremmo nutrirci. Dobbiamo ricercare e coltivare l'arte e la libertà, emozionarci ed emozionare aprire gli orizzonti e valorizzare le differenze rispettandole e valorizzandole: amandole. Dobbiamo progredire culturalmente, dobbiamo fidarci ed essere giusti, onesti, dobbiamo arricchire questo mondo dove il coraggio ed è essere umani non essere bestie</p>
                 
                 <p>La mia risposta alla violenza è la vita</p>
             </div>
