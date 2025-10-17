@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Valenitnom - Experimental Electronic & Classical Music Artist</title>
-    <meta name="description" content="Valenitnom creates experimental electronic and classical music as a manifesto of deep human emotions, advocating for peace, beauty, love, and empathy.">
+    <meta name="description" content="Official website of Valenitnom, electronic musician and producer. Immersive live sets with analog synths, drum machines and experimental sound design. Releases, projects and links to Spotify, Apple Music, YouTube and Beatport.">
     <meta name="keywords" content="valenitnom, experimental music, electronic music, classical music, peace, humanity, B.I.A.N.C.A., Stefano Chiassai">
     <meta name="author" content="Valenitnom">
     <meta name="robots" content="index, follow">
@@ -31,7 +31,7 @@
     <meta property="twitter:description" content="Creating music that represents the deepest human emotions and advocates for peace.">
     <meta property="twitter:image" content="https://valenitnom.com/valenitnom-bianca-no-border.jpg">
     
-    <!-- Structured Data -->
+    <!-- Structured Data: MusicGroup (existing) -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -46,6 +46,24 @@
             "https://instagram.com/valenitnom",
             "https://www.youtube.com/@valenitnomvevo-gc3zr"
         ]
+    }
+    </script>
+
+    <!-- Structured Data: WebSite + Organization (added) -->
+    <script type="application/ld+json">
+    {
+      "@context":"https://schema.org",
+      "@type":["WebSite","Organization"],
+      "name":"Valenitnom",
+      "alternateName":["Valenitnom musician","Valenitnom composer"],
+      "url":"https://valenitnom.com/",
+      "sameAs":[
+        "https://instagram.com/valenitnom",
+        "https://www.youtube.com/@valenitnomvevo-gc3zr",
+        "https://open.spotify.com/intl-it/album/7fBgy9GM4sFQfUluGM1KYR",
+        "https://music.apple.com/it/artist/valenitnom/1670411011",
+        "https://www.beatport.com/it/artist/valenitnom/1281066"
+      ]
     }
     </script>
     
@@ -391,8 +409,6 @@
 .social-icon:nth-child(4) { animation-delay: 0.8s; }
 .social-icon:nth-child(5) { animation-delay: 0.9s; }
 
-
-
 /* CSS-only hover swap for social icons (CSP safe) */
 .social-icon { position: relative; }
 .social-icon img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
@@ -401,25 +417,53 @@
 .social-icon:hover img.default { opacity: 0; }
 .social-icon:hover img.hover { opacity: 1; }
 
-</style>
+/* Added: top boxed container spacing (non-destructive) */
+.container--top { margin: 0 auto 40px; }
+@media (max-width: 768px) {
+  .container--top { margin: 0 auto 20px; }
+}
+
+/* Footer micro-bar and expandable bio (added) */
+.footer-minibar { margin: 20px auto 0; }
+.footer-bio {
+  border-top: 1px solid #eaeaea;
+  background: rgba(255,255,255,0.86);
+}
+.footer-bio > summary {
+  list-style: none;
+  padding: 12px 20px;
+  cursor: pointer;
+  outline: none;
+  user-select: none;
+}
+.footer-bio__line {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  font-size: 13px;
+  opacity: 0.9;
+}
+.footer-bio__read {
+  text-decoration: underline;
+}
+.footer-bio__content {
+  background: #ffffff;
+  border-top: 1px solid #eee;
+  padding: 20px;
+}
+.footer-bio__content .bio-text { padding: 0; }
+.footer-bio__toggle { margin-top: 10px; text-align: center; }
+.footer-bio__toggle .lang-btn--light { padding: 8px 16px; font-size: 14px; }
+
+    </style>
     
     <!-- Preload critical resources -->
     <link rel="preload" as="image" href="valenitnom-bianca-no-border.jpg">
-
-    <!-- Added: top boxed container spacing (non-destructive) -->
-    <style>
-      /* New top container spacing only; does not affect existing rules */
-      .container--top { margin: 0 auto 40px; }
-      @media (max-width: 768px) {
-        .container--top { margin: 0 auto 20px; }
-      }
-    </style>
-
 </head>
 <body>
     
-    <!-- Added: secondary boxed page above the existing one -->
-<!-- INCANTAMENTO: added non-destructively inside the existing white section box -->
+    <!-- INCANTAMENTO boxed section (existing, unchanged) -->
     <div class="container container--top" aria-label="INCANTAMENTO boxed section">
       <section id="incantamento" class="white-section">
         <div class="two-columns">
@@ -491,7 +535,7 @@
       </section>
     </div>
 
-<main class="container">
+    <main class="container">
         <!-- White Section -->
         <section class="white-section">
             <div class="typewriter-container">
@@ -579,6 +623,36 @@
             </div>
         </section>
     </main>
+
+    <!-- Footer micro bar with expandable bilingual bio (added) -->
+    <footer class="container footer-minibar" role="contentinfo">
+      <details class="footer-bio">
+        <summary aria-label="Open footer bio">
+          <div class="footer-bio__line">
+            <span data-lang="en">Valenitnom · official website · electronic musician and producer · <span class="footer-bio__read">Read bio</span></span>
+            <span data-lang="it" style="display:none;">Valenitnom · sito ufficiale · musicista e produttore · <span class="footer-bio__read">Leggi bio</span></span>
+          </div>
+        </summary>
+        <div class="footer-bio__content">
+          <!-- EN bio -->
+          <div class="bio-text" data-lang="en">
+            <p>Valenitnom is an electronic musician and producer who blends analog synths, drum machines and sound design into immersive live electronic sets. His work moves between techno, ambient and experimental electronic, building evolving soundscapes where human and machine interact in real time.</p>
+          </div>
+          <!-- IT bio -->
+          <div class="bio-text" data-lang="it" style="display:none;">
+            <p>Valenitnom è un musicista e produttore di musica elettronica che unisce synth analogici, drum machine e sound design in live set elettronici immersivi. Il suo lavoro si muove tra techno, ambient ed elettronica sperimentale, costruendo paesaggi sonori in evoluzione dove uomo e macchina dialogano in tempo reale.</p>
+          </div>
+
+          <!-- Local language toggle for footer bio -->
+          <div class="footer-bio__toggle">
+            <button class="lang-btn lang-btn--light" onclick="toggleLanguage()" aria-label="Toggle language for footer bio">
+              <span data-lang="en">Leggi in italiano</span>
+              <span data-lang="it" style="display:none;">Read in english</span>
+            </button>
+          </div>
+        </div>
+      </details>
+    </footer>
     
     <script>
         // Typewriter effect
@@ -613,7 +687,7 @@
             }
         }
         
-        // Language toggle
+        // Language toggle (global, reused by footer and sections)
         function toggleLanguage() {
             currentLang = currentLang === 'en' ? 'it' : 'en';
             document.documentElement.lang = currentLang;
